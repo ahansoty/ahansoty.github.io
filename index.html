@@ -6,6 +6,25 @@
 <title>Aditya Hansoty</title>
 <meta name="theme-color" content="#FBFBF8">
 <meta name="description" content="Aditya Hansoty, biomedical engineering student working on prosthetics, medical devices, and machine learning.">
+<link rel="canonical" href="https://ahansoty.github.io/">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ahansoty.github.io/">
+<meta property="og:site_name" content="Aditya Hansoty">
+<meta property="og:title" content="Aditya Hansoty">
+<meta property="og:description" content="Biomedical Engineering @ University of Michigan">
+<meta property="og:image" content="https://ahansoty.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aditya Hansoty, biomedical engineering at the University of Michigan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aditya Hansoty">
+<meta name="twitter:description" content="Biomedical Engineering @ University of Michigan">
+<meta name="twitter:image" content="https://ahansoty.github.io/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,6 +230,20 @@
   .about p:last-child{ margin-bottom: 0; }
   .about strong{ font-weight: 500; color: var(--ink); }
 
+  .avail{
+    margin: 30px 0 0;
+    padding: 11px 0 11px 16px;
+    border-left: 2px solid var(--signal);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+
   .about a, .blurb a{
     color: var(--ink);
     text-decoration: none;
@@ -226,29 +259,36 @@
   .stage{ position: relative; }
   .viewport{
     overflow: hidden;
-    margin-right: -60px;
-    padding-right: 4px;
+    margin: 0 -88px;
+    padding: 0 88px;
   }
   .stage{ position: relative; }
 
   .track{
     display: flex;
-    transition: transform .48s cubic-bezier(.22,.68,.28,1);
+    transition: transform .5s cubic-bezier(.22,.68,.28,1);
   }
-  @media (prefers-reduced-motion: reduce){ .track{ transition: none; } }
 
-  /* the next card peeks in from the right so the stack is visible */
+  /* the cards either side stay in view, set back and dimmed */
   .card{
-    flex: 0 0 86%;
-    min-width: 86%;
-    margin-right: 22px;
-    opacity: .28;
-    transition: opacity .45s ease;
+    flex: 0 0 100%;
+    min-width: 100%;
+    margin-right: 3%;
+    background: var(--ground);
+    opacity: .26;
+    transform: scale(.9);
+    transform-origin: 50% 50%;
+    transition: opacity .5s ease, transform .5s ease, filter .5s ease;
+    filter: blur(1px);
   }
-  .card.current{ opacity: 1; }
+  .card.current{
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
   .card:not(.current){ cursor: pointer; }
   @media (prefers-reduced-motion: reduce){
-    .card{ transition: none; }
+    .card, .track{ transition: none; }
   }
 
   .media{
@@ -523,8 +563,8 @@
     .work{ margin-top: 68px; }
     .portrait{ width: 88px; }
     .arrows button{ width: 44px; height: 44px; }
-    .card{ flex-basis: 90%; min-width: 90%; margin-right: 16px; }
-    .viewport{ margin-right: -20px; }
+    .viewport{ margin: 0 -24px; padding: 0 24px; }
+    .card{ flex-basis: 92%; min-width: 92%; margin-right: 3%; }
     .controls{ margin-bottom: 14px; }
     .ticks i{ width: 20px; }
     .ticks button[aria-current="true"] i{ width: 30px; }
@@ -574,6 +614,9 @@
         <a href="https://www.linkedin.com/in/adityahansoty/" aria-label="LinkedIn" target="_blank" rel="noopener" data-fires>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.5 8.75 22 10.9 22 14.2V21h-4v-6c0-1.6-.03-3.65-2.25-3.65-2.25 0-2.6 1.73-2.6 3.53V21H9V9Z"/></svg>
         </a>
+        <a href="resume.pdf" aria-label="Resume (PDF)" target="_blank" rel="noopener" data-fires>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 2h7.6L20 8.4V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm7 2H7v16h11V9h-4a1 1 0 0 1-1-1V4Zm2 .8V7h2.2L15 4.8ZM8.5 12h7v1.8h-7V12Zm0 3.4h7v1.8h-7v-1.8Z"/></svg>
+        </a>
         <a href="https://github.com/ahansoty" aria-label="GitHub" target="_blank" rel="noopener" data-fires>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.88c.51.1.7-.22.7-.49v-1.9c-2.84.62-3.44-1.2-3.44-1.2-.47-1.18-1.14-1.5-1.14-1.5-.93-.63.07-.62.07-.62 1.03.07 1.57 1.06 1.57 1.06.91 1.57 2.4 1.12 2.99.86.09-.66.36-1.12.65-1.38-2.27-.26-4.65-1.14-4.65-5.06 0-1.12.4-2.03 1.05-2.75-.1-.26-.46-1.3.1-2.71 0 0 .86-.28 2.81 1.05a9.7 9.7 0 0 1 5.12 0c1.95-1.33 2.8-1.05 2.8-1.05.57 1.41.21 2.45.11 2.71.66.72 1.05 1.63 1.05 2.75 0 3.93-2.39 4.8-4.67 5.05.37.32.7.94.7 1.9v2.82c0 .27.19.6.71.49A10.2 10.2 0 0 0 12 1.8Z"/></svg>
         </a>
@@ -591,6 +634,8 @@
       <p>I'm a <strong>biomedical engineering</strong> student at the University of Michigan, minoring in computer science.</p>
       <p>My interests lie at the intersection of the body and a machine, with the goal of improving quality of life.</p>
       <p>Previously, I've worked as a summer research intern at the <a href="https://rehab-robotics.lab.uic.edu/" target="_blank" rel="noopener">University of Illinois Chicago Rehabilitation Robotics Lab</a> and at <a href="https://www.uchicagomedicine.org/cancer/education-outreach/student-education/high-school-undergraduate/researchstart" target="_blank" rel="noopener">UChicago Medicine</a>, where I contributed to projects spanning wearable robotics, prosthetic systems, and biomedical research.</p>
+      <p class="avail">Looking for co-ops and summer internships
+        <a href="mailto:adihansoty@gmail.com">adihansoty@gmail.com</a></p>
     </div>
   </section>
 
@@ -625,12 +670,13 @@
               <div class="strip">
                 <button class="thumb" data-img="media/afp-lab.jpg" aria-label="Rehabilitation Robotics Lab, UIC"></button>
                 <button class="thumb" data-img="media/afp-encoder-cap.jpg" aria-label="Encoder cap, CAD"></button>
+                <button class="thumb" data-img="media/afp-encoder-base.jpg" aria-label="Encoder base, CAD"></button>
                 <button class="thumb" data-img="media/afp-toe-plate.jpg" aria-label="Toe push-off plate, CAD"></button>
               </div>
               <div class="card-body">
                 <p class="meta"><b>01</b>/03 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Ankle-foot prosthesis development</h3>
-                <p class="blurb">A powered ankle-foot prosthesis taken through 12 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Encoder caps and toe grips designed in SolidWorks and CNC machined.</p>
+                <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Encoder caps and toe grips designed in SolidWorks and CNC machined.</p>
                 <p class="tags">SolidWorks · CNC · TwinCAT · Python · EMG / ECG · MATLAB<span class="note">Preparing manuscript for submission</span></p>
               </div>
             </article>
@@ -653,18 +699,12 @@
             </article>
 
             <article class="card" role="group" aria-label="Project 3 of 3">
-              <figure class="media soon">
-                <div class="soon-inner">
-                  <svg class="cone" viewBox="0 0 64 64" aria-hidden="true">
-                    <path class="shell"  d="M32 7 L48 51 H16 Z"/>
-                    <rect class="stripe" x="25"   y="27" width="14" height="5"/>
-                    <rect class="stripe" x="21.5" y="38" width="21" height="5"/>
-                    <rect class="base"   x="9" y="51" width="46" height="7" rx="2.5"/>
-                  </svg>
-                  <p class="soon-label">Under construction</p>
-                </div>
+              <figure class="media">
+                <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg"
+                       autoplay muted loop playsinline preload="metadata"></video>
               </figure>
               <div class="strip">
+                <button class="thumb" data-video="media/emg-grasp.mp4" data-poster="media/emg-grasp.jpg" aria-label="Grasping a container"></button>
                 <button class="thumb" data-img="media/emg-wiring.jpg" aria-label="Schematic, signal and power"></button>
                 <button class="thumb" data-img="media/emg-assembly.jpg" aria-label="Gripper assembly, CAD"></button>
                 <button class="thumb" data-img="media/emg-arm1.jpg" aria-label="Linkage arm, left"></button>
@@ -675,7 +715,7 @@
               <div class="card-body">
                 <p class="meta"><b>03</b>/03 &nbsp;·&nbsp; Personal project</p>
                 <h3>EMG-controlled prosthetic gripper</h3>
-                <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. A Python feature pipeline classifies three forearm gestures at 95% accuracy across electrode-replacement sessions.</p>
+                <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An LDA classifier on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
                 <p class="tags">SolidWorks · Arduino · Python · scikit-learn</p>
               </div>
             </article>
@@ -689,7 +729,7 @@
 
   <footer class="row">
     <div class="content">
-      <span>Looking for co-ops and summer internships &nbsp;·&nbsp; <a href="mailto:adihansoty@gmail.com">adihansoty@gmail.com</a></span>
+      <span><a href="mailto:adihansoty@gmail.com">adihansoty@gmail.com</a> &nbsp;·&nbsp; <a href="resume.pdf" target="_blank" rel="noopener">resume</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/adityahansoty/" target="_blank" rel="noopener">linkedin</a></span>
       <span>Updated August 2026</span>
     </div>
   </footer>
@@ -708,12 +748,22 @@
 
   const cur   = document.getElementById('cur');
   const ticks = Array.from(document.querySelectorAll('.ticks button'));
-  const CARD_PCT = 86, CARD_GAP = 22;   // must match the CSS above
+  const viewport = document.querySelector('.viewport');
+
+  // measured rather than hard-coded, so the card size can change freely
+  function slide() {
+    const w   = cards[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(cards[0]).marginRight) || 0;
+    const pad = parseFloat(getComputedStyle(viewport).paddingLeft) || 0;
+    const lead = (viewport.clientWidth - w) / 2 - pad;
+    track.style.transform = 'translateX(' + (lead - i * (w + gap)) + 'px)';
+  }
+  window.addEventListener('resize', slide);
+  window.addEventListener('load', slide);
 
   function go(n, fire) {
     i = (n + cards.length) % cards.length;
-    track.style.transform =
-      'translateX(calc(' + (-i * CARD_PCT) + '% - ' + (i * CARD_GAP) + 'px))';
+    slide();
     for (let k = 0; k < cards.length; k++) {
       cards[k].classList.toggle('current', k === i);
       cards[k].setAttribute('aria-hidden', k !== i);
