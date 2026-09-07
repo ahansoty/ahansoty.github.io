@@ -595,7 +595,8 @@
           <button data-go="0" aria-label="Project 1"><i></i></button>
           <button data-go="1" aria-label="Project 2"><i></i></button>
           <button data-go="2" aria-label="Project 3"><i></i></button>
-          <span class="count"><b id="cur">01</b> / 03</span>
+          <button data-go="3" aria-label="Project 4"><i></i></button>
+          <span class="count"><b id="cur">01</b> / 04</span>
         </div>
         <div class="arrows">
           <button id="prev" aria-label="Previous project">
@@ -610,7 +611,7 @@
         <div class="viewport">
           <div class="track" id="track">
 
-            <article class="card" role="group" aria-label="Project 1 of 3">
+            <article class="card" role="group" aria-label="Project 1 of 4">
               <figure class="media">
                 <video src="media/afp.mp4" poster="media/afp.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
@@ -621,14 +622,14 @@
                 <button class="thumb" data-img="media/afp-encoder-base.jpg" aria-label="Encoder base, CAD"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>01</b>/03 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
+                <p class="meta"><b>01</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Ankle-foot prosthesis development</h3>
                 <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Threaded encoder caps designed in SolidWorks and CNC machined.</p>
                 <p class="tags">SolidWorks · CNC · TwinCAT · Python · EMG / ECG · MATLAB<span class="note">Preparing manuscript for submission</span></p>
               </div>
             </article>
 
-            <article class="card" role="group" aria-label="Project 2 of 3">
+            <article class="card" role="group" aria-label="Project 2 of 4">
               <figure class="media">
                 <video src="media/ar-gait.mp4" poster="media/ar-gait.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
@@ -638,14 +639,14 @@
                 <button class="thumb" data-img="media/ar-hololens.jpg" aria-label="HoloLens 2"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>02</b>/03 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
+                <p class="meta"><b>02</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Augmented Reality Feedback</h3>
                 <p class="blurb">A signal-agnostic <a href="https://github.com/ahansoty/ar-visual-feedback-platform" target="_blank" rel="noopener">open source AR platform</a> that pixel-streams arbitrary LSL biosignals into a HoloLens 2; sole developer. A latency study across three injected delay levels found the headset statistically indistinguishable from a monitor baseline (0 ± 10 ms).</p>
                 <p class="tags">Unity · C# · Python · Vicon · WebSockets<span class="note">Manuscript submitted to ICRA 2027</span></p>
               </div>
             </article>
 
-            <article class="card" role="group" aria-label="Project 3 of 3">
+            <article class="card" role="group" aria-label="Project 3 of 4">
               <figure class="media">
                 <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
@@ -660,10 +661,31 @@
                 <button class="thumb" data-img="media/emg-lid.jpg" aria-label="Housing, lid"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>03</b>/03 &nbsp;·&nbsp; Personal project</p>
+                <p class="meta"><b>03</b>/04 &nbsp;·&nbsp; Personal project</p>
                 <h3>EMG-controlled prosthetic gripper</h3>
                 <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An LDA classifier on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
                 <p class="tags">SolidWorks · Arduino · Python · scikit-learn</p>
+              </div>
+            </article>
+
+            <article class="card" role="group" aria-label="Project 4 of 4">
+              <figure class="media">
+                <img src="media/tibial-plate-fea-bending.png" alt="Von Mises stress in the tibial plate under ASTM F382 four-point bending">
+              </figure>
+              <div class="strip">
+                <button class="thumb" data-img="media/tibial-plate-assembly-iso.png" aria-label="Plate on a fractured tibia model, CAD"></button>
+                <button class="thumb" data-img="media/tibial-plate-plate-iso.png" aria-label="Parametric 10-hole locking plate, CAD"></button>
+                <button class="thumb" data-img="media/tibial-plate-vonmises.png" aria-label="Four-point bending, von Mises stress, top view"></button>
+                <button class="thumb" data-img="media/tibial-plate-torsion.png" aria-label="Torsion, 10 N·m, stress intensity"></button>
+                <button class="thumb" data-img="media/tibial-plate-deflection.png" aria-label="Four-point bending, resultant displacement"></button>
+                <button class="thumb" data-img="media/tibial-plate-simulink-diagram.png" aria-label="Simulink healing model, block diagram"></button>
+                <button class="thumb" data-img="media/tibial-plate-simulink-results.png" aria-label="Plate stress and load share over 12 weeks of healing"></button>
+              </div>
+              <div class="card-body">
+                <p class="meta"><b>04</b>/04 &nbsp;·&nbsp; Personal project</p>
+                <h3>Tibial Fracture Fixation Plate — ASTM F382</h3>
+                <p class="blurb">Parametric locking compression plate designed in SolidWorks and validated to ASTM F382 via finite element analysis. Bending FOS 1.73, torsion FOS 2.36. Parallel Simulink model simulates fracture healing load transfer over 12 weeks.</p>
+                <p class="tags">SolidWorks · FEA · ASTM F382 · Ti-6Al-4V · Simulink · Biomedical Device Design</p>
               </div>
             </article>
 
