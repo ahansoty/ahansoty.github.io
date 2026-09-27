@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aditya Hansoty</title>
-<meta name="theme-color" content="#0E0E10">
+<meta name="theme-color" content="#0B0C0F">
 <meta name="description" content="Aditya Hansoty, biomedical engineering student working on prosthetics, medical devices, and machine learning.">
 <link rel="canonical" href="https://ahansoty.github.io/">
 
@@ -23,27 +23,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg:          #0E0E10;
-    --surface:     #141416;
-    --surface-2:   #1B1B1E;
-    --ink:         #F5F5F7;
-    --text:        #A9A9B2;
-    --muted:       #6E6E78;
-    --line:        #26262B;
-    --line-2:      #3A3A42;
-    --accent:      #FF5A1F;
-    --accent-ink:  #FF7A45;
-    --accent-soft: rgba(255,90,31,.12);
+    --bg:      #0B0C0F;
+    --bg-2:    #101217;
+    --bg-3:    #151821;
+    --line:    #1F232B;
+    --line-2:  #2C3140;
+    --text:    #B7BCC7;
+    --muted:   #6B7280;
+    --ink:     #F4F5F7;
+    --accent:  #B4FF3A;
+    --accent-2:#7ED321;
+    --accent-dim: rgba(180,255,58,.14);
 
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+    --sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:    "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
-    --radius: 8px;
-    --max: 1080px;
+    --max: 1180px;
+    --pad: 32px;
   }
 
   *{ box-sizing: border-box; }
@@ -55,257 +56,280 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    font-size: 17px;
+    font-size: 16.5px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-
-  ::selection{ background: rgba(255,90,31,.35); }
   a{ color: inherit; }
-  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  ::selection{ background: rgba(180,255,58,.3); color: #fff; }
+  :focus-visible{ outline: 1.5px solid var(--accent); outline-offset: 3px; }
 
-  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 
-  /* ---------- top bar ---------- */
+  .mono{ font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; }
+
+  /* ---------- progress + top bar ---------- */
+
+  .progress{ position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--accent); z-index: 40; }
 
   .top{
-    position: sticky; top: 0; z-index: 20;
-    background: rgba(14,14,16,.78);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
     border-bottom: 1px solid transparent;
-    transition: border-color .2s ease;
+    transition: background .25s ease, border-color .25s ease;
   }
-  .top.scrolled{ border-color: var(--line); }
-  .top .wrap{ display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .brand{ font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
-  .menu{ display: flex; align-items: center; gap: 26px; margin: 0; padding: 0; list-style: none; }
-  .menu a{
-    text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--text);
-    padding: 6px 0; border-bottom: 1.5px solid transparent;
-    transition: color .18s ease, border-color .18s ease;
+  .top.scrolled{
+    background: rgba(11,12,15,.72);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-color: var(--line);
   }
-  .menu a:hover, .menu a.active{ color: var(--ink); border-color: var(--accent); }
-  .menu li.cta .btn{ padding: 9px 14px; border: 1px solid var(--accent); font-size: 13.5px; }
-  .menu li.cta .btn:hover{ border-color: var(--ink); }
+  .top .wrap{ display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand{
+    display: inline-flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 700; letter-spacing: -.01em;
+  }
+  .brand .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .menu{ display: flex; align-items: center; gap: 28px; margin: 0; padding: 0; list-style: none; }
+  .menu a{ text-decoration: none; color: var(--muted); transition: color .18s ease; }
+  .menu a .n{ color: var(--accent); margin-right: 8px; }
+  .menu a:hover, .menu a.active{ color: var(--ink); }
 
   .btn{
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 14px; border-radius: 6px;
-    border: 1px solid var(--line-2); background: transparent; color: var(--ink);
-    text-decoration: none; font-size: 13.5px; font-weight: 500; line-height: 1; letter-spacing: .01em;
-    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 16px; border: 1px solid var(--line-2); border-radius: 4px;
+    background: transparent; color: var(--ink); text-decoration: none;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; line-height: 1;
+    transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
   }
-  .btn:hover{ border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
-  .btn.primary{ background: var(--accent); color: #0E0E10; border-color: var(--accent); }
-  .btn.primary:hover{ background: var(--ink); border-color: var(--ink); color: #0E0E10; }
-  .btn svg{ width: 16px; height: 16px; flex: none; }
+  .btn:hover{ border-color: var(--accent); background: var(--accent-dim); transform: translateY(-1px); }
+  .btn.primary{ background: var(--accent); border-color: var(--accent); color: #0B0C0F; font-weight: 500; }
+  .btn.primary:hover{ background: #fff; border-color: #fff; }
+  .btn svg{ width: 15px; height: 15px; flex: none; }
 
   /* ---------- hero ---------- */
 
-  .hero{ padding: 84px 0 28px; }
-  .hero .hero-grid{ display: grid; grid-template-columns: 1fr 300px; gap: 64px; align-items: center; }
-  .eyebrow{
-    font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--accent-ink); margin: 0 0 18px;
+  .hero{
+    position: relative; padding: 168px 0 72px;
+    background-image: radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size: 26px 26px;
   }
+  .hero::after{
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(11,12,15,0) 55%, var(--bg) 100%);
+  }
+  .hero .wrap{ position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr .85fr; gap: 64px; align-items: center; }
+
+  .eyebrow{ color: var(--accent); margin: 0 0 22px; }
+  .eyebrow::before{ content: '// '; color: var(--muted); }
+
   h1{
-    font-size: clamp(44px, 6.6vw, 76px); line-height: .98; letter-spacing: -.045em;
-    font-weight: 600; color: var(--ink); margin: 0 0 20px;
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(60px, 9.4vw, 124px); line-height: .9; letter-spacing: -.045em;
+    color: var(--ink); margin: 0 0 26px;
   }
-  .lede{ font-size: 20px; line-height: 1.5; max-width: 36ch; margin: 0 0 28px; }
+  h1 .thin{ display: block; font-weight: 500; color: var(--muted); }
+
+  .lede{ font-size: 19px; line-height: 1.55; max-width: 44ch; margin: 0 0 30px; color: var(--text); }
   .actions{ display: flex; flex-wrap: wrap; gap: 10px; }
 
-  .portrait{
-    position: relative; aspect-ratio: 4 / 5; border-radius: 8px; overflow: hidden;
-    background: var(--surface-2); border: 1px solid var(--line-2);
-    box-shadow: 0 40px 80px -40px rgba(0,0,0,.9);
+  /* HUD frame: a corner-bracketed panel */
+  .hud{ position: relative; padding: 14px; }
+  .hud::before, .hud::after, .hud > i::before, .hud > i::after{
+    content: ''; position: absolute; width: 14px; height: 14px; border: 1.5px solid var(--accent);
   }
-  .portrait img{ width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.92) contrast(1.04); }
+  .hud::before{ left: 0; top: 0; border-right: 0; border-bottom: 0; }
+  .hud::after{ right: 0; top: 0; border-left: 0; border-bottom: 0; }
+  .hud > i::before{ left: 0; bottom: 0; border-right: 0; border-top: 0; }
+  .hud > i::after{ right: 0; bottom: 0; border-left: 0; border-top: 0; }
 
-  /* the live trace under the hero: a quiet EMG baseline that fires when the page is used */
-  .trace{ padding-top: 26px; }
-  .trace canvas{ display: block; width: 100%; height: 36px; }
+  .portrait{ aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-3); border: 1px solid var(--line); }
+  .portrait img{ width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.25) contrast(1.05); transition: filter .5s ease; }
+  .portrait:hover img{ filter: none; }
+
+  .spec{ margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .spec li{ display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.45; }
+  .spec .k{ color: var(--muted); padding-top: 3px; }
+  .spec .v{ color: var(--ink); }
+  .spec a{ text-decoration: none; border-bottom: 1px solid var(--line-2); transition: border-color .18s ease, color .18s ease; }
+  .spec a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- scope band ----------
+     Three EMG channels: quiet at rest, they fire when you use the page. */
+  .scope{ position: relative; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); }
+  .scope canvas{ display: block; width: 100%; height: 132px; }
+  .scope .tag{ position: absolute; left: var(--pad); top: 12px; color: var(--muted); }
+  .scope .tag b{ color: var(--accent); font-weight: 500; }
+  .scope .tag b::before{ content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 1px; box-shadow: 0 0 10px var(--accent); }
 
   /* ---------- sections ---------- */
 
-  section{ padding: 72px 0; }
-  .sec-head{ display: flex; align-items: baseline; gap: 18px; margin: 0 0 28px; }
-  .sec-head .num{ font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--accent-ink); }
-  h2{ font-size: 28px; letter-spacing: -.03em; font-weight: 600; color: var(--ink); margin: 0; }
+  section{ padding: 96px 0; }
+  .sec-head{ display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin: 0 0 36px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .sec-head h2{ font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); margin: 0; }
+  .sec-head h2 .n{ color: var(--accent); margin-right: 14px; }
+  .sec-head .count{ color: var(--muted); }
 
   /* ---------- about ---------- */
 
-  .about-grid{ display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: start; }
-  .about p{ margin: 0 0 16px; max-width: 58ch; font-size: 18px; }
-  .about p:last-child{ margin-bottom: 0; }
-  .about strong{ font-weight: 600; color: var(--ink); }
+  .about-grid{ display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: start; }
+  .about .big{ font-family: var(--display); font-weight: 500; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.3; letter-spacing: -.02em; color: var(--ink); margin: 0 0 22px; }
+  .about p{ margin: 0 0 16px; max-width: 60ch; }
+  .about strong{ color: var(--ink); font-weight: 500; }
+  .about a, .panel a{ color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-2); transition: border-color .18s ease, color .18s ease; }
+  .about a:hover, .panel a:hover{ color: var(--accent); border-color: var(--accent); }
 
-  .about a, .body a, .now a{
-    color: var(--ink); text-decoration: none;
-    border-bottom: 1px solid var(--line-2);
-    transition: border-color .18s ease, color .18s ease;
-  }
-  .about a:hover, .body a:hover, .now a:hover{ color: var(--accent-ink); border-color: var(--accent); }
+  .roles{ list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .roles li{ display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .roles .k{ color: var(--muted); padding-top: 4px; }
+  .roles .k.now{ color: var(--accent); }
+  .roles .role{ display: block; color: var(--ink); font-weight: 500; }
+  .roles .org{ display: block; font-size: 14.5px; color: var(--text); line-height: 1.5; }
 
-  .now{ border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 22px 24px 8px; }
-  .now h3{
-    font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 12px; font-weight: 500;
-  }
-  .now h3 + ul{ margin-bottom: 20px; }
-  .now ul{ list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .now li{ display: grid; gap: 2px; padding-left: 16px; position: relative; }
-  .now li::before{
-    content: ''; position: absolute; left: 0; top: 11px;
-    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-  }
-  .now .role{ color: var(--ink); font-weight: 500; line-height: 1.4; }
-  .now .org{ font-size: 14.5px; color: var(--muted); line-height: 1.45; }
-  .now .org a{ color: var(--text); }
+  /* ---------- work: the index ---------- */
 
-  /* ---------- work ---------- */
-
-  .projects{ display: grid; gap: 28px; }
-  .project{
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr;
-    transition: border-color .2s ease, transform .2s ease;
+  .index{ list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .row{ border-bottom: 1px solid var(--line); }
+  .row-head{
+    width: 100%; appearance: none; background: none; border: 0; cursor: pointer; color: inherit; text-align: left;
+    display: grid; grid-template-columns: 64px 1fr auto 44px; gap: 24px; align-items: center;
+    padding: 26px 0; transition: padding .25s ease;
   }
-  .project:hover{ border-color: var(--line-2); transform: translateY(-2px); }
-  .media{ position: relative; background: var(--surface-2); overflow: hidden; min-height: 100%; }
-  .media img, .media video{ width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+  .row-head:hover, .row.open .row-head{ padding-left: 8px; }
+  .row-head .idx{ font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--accent); }
+  .row-head .title{ font-family: var(--display); font-weight: 500; font-size: clamp(22px, 2.6vw, 32px); letter-spacing: -.025em; color: var(--ink); line-height: 1.1; transition: color .18s ease; }
+  .row-head:hover .title{ color: var(--accent); }
+  .row-head .side{ display: flex; flex-direction: column; align-items: flex-end; gap: 6px; text-align: right; }
+  .row-head .org{ color: var(--muted); }
+  .row-head .status{ color: var(--accent); }
+  .row-head .status::before{ content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 2px; }
+  .row-head .plus{
+    width: 36px; height: 36px; border: 1px solid var(--line-2); border-radius: 50%;
+    display: grid; place-items: center; color: var(--ink); justify-self: end;
+    transition: transform .3s ease, border-color .18s ease, background .18s ease;
+  }
+  .row-head .plus svg{ width: 14px; height: 14px; }
+  .row-head:hover .plus{ border-color: var(--accent); }
+  .row.open .row-head .plus{ transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: #0B0C0F; }
+
+  .panel{ display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1); }
+  .row.open .panel{ grid-template-rows: 1fr; }
+  .panel > div{ overflow: hidden; }
+  .panel-in{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; padding: 6px 0 40px; }
+  .media{ aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-3); border: 1px solid var(--line); }
+  .media img, .media video{ width: 100%; height: 100%; object-fit: cover; display: block; }
   .media img{ cursor: zoom-in; }
-
-  .body{ padding: 30px 32px 28px; display: flex; flex-direction: column; gap: 14px; }
-  .meta{
-    display: flex; align-items: center; gap: 10px; margin: 0;
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-  }
-  .meta .idx{ color: var(--accent-ink); }
-  .project h3{ font-size: 23px; letter-spacing: -.025em; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.2; }
-  .blurb{ margin: 0; font-size: 16px; line-height: 1.6; }
-
-  .status{
-    display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
-    font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--accent-ink); line-height: 1.4;
-  }
-  .status::before{ content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-
+  .panel-body{ display: flex; flex-direction: column; gap: 18px; }
+  .blurb{ margin: 0; font-size: 16px; line-height: 1.65; }
   .tags{ display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-  .tags li{
-    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
-    padding: 4px 8px; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); background: transparent;
-  }
-
-  .strip{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .tags li{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--line-2); border-radius: 3px; color: var(--text); }
+  .strip{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
   .thumb{
-    position: relative; appearance: none; width: 64px; height: 44px; padding: 0;
-    border: 1px solid var(--line-2); border-radius: 4px;
-    background: var(--surface-2) center/cover no-repeat; cursor: pointer; opacity: .8;
-    transition: opacity .18s ease, transform .18s ease, border-color .18s ease;
+    position: relative; appearance: none; width: 68px; height: 46px; padding: 0;
+    border: 1px solid var(--line-2); border-radius: 3px;
+    background: var(--bg-3) center/cover no-repeat; cursor: pointer; opacity: .75;
+    transition: opacity .18s ease, border-color .18s ease, transform .18s ease;
   }
-  .thumb:hover{ opacity: 1; transform: translateY(-2px); border-color: var(--accent); }
+  .thumb:hover{ opacity: 1; border-color: var(--accent); transform: translateY(-2px); }
   .thumb[data-video]::after{
     content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    border-left: 10px solid rgba(255,255,255,.95);
-    border-top: 6px solid transparent; border-bottom: 6px solid transparent;
-    filter: drop-shadow(0 0 2px rgba(28,27,25,.6));
+    border-left: 10px solid rgba(255,255,255,.95); border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.7));
   }
+  .strip-label{ color: var(--muted); margin: 0 0 8px; }
+
+  /* cursor-following preview for collapsed rows (fine pointers only) */
+  .preview{
+    position: fixed; left: 0; top: 0; width: 300px; aspect-ratio: 16 / 10; z-index: 25;
+    pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.96);
+    border: 1px solid var(--line-2); background: var(--bg-3) center/cover no-repeat;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.9);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .preview.on{ opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
   /* ---------- publications ---------- */
 
-  .pubs ol{ list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-  .pub{
-    display: grid; grid-template-columns: 40px 1fr; gap: 18px; align-items: start;
-    padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  }
-  .pub .n{ font-family: var(--mono); color: var(--muted); font-size: 12px; padding-top: 5px; }
-  .pub .t{ color: var(--ink); font-weight: 600; margin: 0 0 6px; font-size: 17.5px; line-height: 1.35; letter-spacing: -.01em; max-width: 64ch; }
+  .pubs ol{ list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .pub{ display: grid; grid-template-columns: 64px 1fr 300px; gap: 24px; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .pub .n{ font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--accent); padding-top: 6px; }
+  .pub .t{ font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -.02em; line-height: 1.3; color: var(--ink); margin: 0 0 8px; }
   .pub .a{ margin: 0; font-size: 15px; }
-  .pub .a strong{ color: var(--ink); font-weight: 600; }
-  .pub .v{
-    display: block; margin: 10px 0 0;
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.7;
-  }
-  .pub .v b{ color: var(--accent-ink); font-weight: 500; }
+  .pub .a strong{ color: var(--ink); font-weight: 500; }
+  .pub .v{ text-align: right; color: var(--muted); padding-top: 6px; line-height: 1.7; }
+  .pub .v b{ color: var(--ink); font-weight: 500; }
 
   /* ---------- footer ---------- */
 
-  footer{ border-top: 1px solid var(--line); padding: 30px 0 52px; font-size: 14px; color: var(--muted); }
-  footer .wrap{ display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; }
-  footer ul{ display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-  footer a{ color: var(--text); text-decoration: none; }
-  footer a:hover{ color: var(--ink); }
+  footer{ border-top: 1px solid var(--line); padding: 34px 0 56px; }
+  footer .wrap{ display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px 24px; color: var(--muted); }
+  footer ul{ display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  footer a{ text-decoration: none; color: var(--text); }
+  footer a:hover{ color: var(--accent); }
 
   /* ---------- lightbox ---------- */
 
   .lightbox{
-    position: fixed; inset: 0; z-index: 50;
-    background: rgba(6,6,8,.94);
+    position: fixed; inset: 0; z-index: 60; background: rgba(5,6,8,.94);
     display: none; place-items: center; padding: 5vh 5vw; cursor: zoom-out;
   }
   .lightbox.open{ display: grid; }
-  .lightbox img, .lightbox video{
-    max-width: 100%; max-height: 84vh; object-fit: contain; display: block; margin: 0 auto; border-radius: 10px;
-  }
+  .lightbox img, .lightbox video{ max-width: 100%; max-height: 84vh; object-fit: contain; display: block; margin: 0 auto; border: 1px solid var(--line-2); }
   .lightbox .hide{ display: none; }
-  .lb-cap{
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
-    color: #8A8A94; text-align: center; margin: 16px 0 0;
-  }
+  .lb-cap{ color: var(--muted); text-align: center; margin: 16px 0 0; }
   .lb-nav{
     position: absolute; top: 50%; transform: translateY(-50%);
-    appearance: none; background: none; border: 0; color: #F5F5F7;
-    font-size: 40px; line-height: 1; padding: 12px 20px; cursor: pointer; opacity: .6;
+    appearance: none; background: none; border: 0; color: var(--ink);
+    font-size: 40px; line-height: 1; padding: 12px 20px; cursor: pointer; opacity: .55;
   }
-  .lb-nav:hover{ opacity: 1; }
+  .lb-nav:hover{ opacity: 1; color: var(--accent); }
   .lb-prev{ left: 1vw; }
   .lb-next{ right: 1vw; }
 
+  /* ---------- reveal ---------- */
+  .js .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in{ opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity: 1; transform: none; transition: none; } .panel{ transition: none; } }
+
   /* ---------- small screens ---------- */
 
-  @media (max-width: 860px){
-    .hero .hero-grid{ grid-template-columns: 1fr; gap: 36px; }
-    .portrait{ width: 168px; order: -1; }
-    .about-grid{ grid-template-columns: 1fr; gap: 28px; }
-    .project{ grid-template-columns: 1fr; }
-    .media{ aspect-ratio: 16 / 10; min-height: 0; }
-    .pub{ grid-template-columns: 32px 1fr; gap: 14px; }
+  @media (max-width: 900px){
+    .hero{ padding: 128px 0 56px; }
+    .hero .wrap{ grid-template-columns: 1fr; gap: 40px; }
+    .hud{ max-width: 340px; }
+    .about-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .row-head{ grid-template-columns: 44px 1fr 40px; gap: 16px; padding: 20px 0; }
+    .row-head .side{ grid-column: 2; align-items: flex-start; text-align: left; }
+    .row-head .plus{ grid-row: 1; grid-column: 3; }
+    .panel-in{ grid-template-columns: 1fr; gap: 24px; }
+    .pub{ grid-template-columns: 44px 1fr; gap: 16px; }
+    .pub .v{ grid-column: 2; text-align: left; padding-top: 0; }
+    .preview{ display: none; }
   }
   @media (max-width: 640px){
+    :root{ --pad: 20px; }
     body{ font-size: 16px; }
-    .wrap{ padding: 0 20px; }
-    .top .wrap{ height: 58px; }
+    .top .wrap{ height: 60px; }
     .menu li:not(.cta){ display: none; }
-    .hero{ padding: 48px 0 16px; }
-    .lede{ font-size: 18px; }
-    section{ padding: 52px 0; }
-    h2{ font-size: 26px; }
-    .body{ padding: 22px 20px 22px; }
-    .project h3{ font-size: 21px; }
-    .about p{ font-size: 17px; }
-    .thumb{ width: 58px; height: 40px; }
+    section{ padding: 64px 0; }
+    .scope canvas{ height: 96px; }
+    .row-head .plus{ width: 32px; height: 32px; }
+    .thumb{ width: 60px; height: 42px; }
   }
 </style>
 </head>
 
 <body>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <nav class="top" id="top" aria-label="Site">
   <div class="wrap">
-    <a class="brand" href="#">Aditya Hansoty</a>
-    <ul class="menu">
-      <li><a href="#about" data-nav="about">About</a></li>
-      <li><a href="#work" data-nav="work">Work</a></li>
-      <li><a href="#publications" data-nav="publications">Publications</a></li>
-      <li class="cta">
-        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener" data-fires>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 2h7.6L20 8.4V21a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm7 2H7v16h11V9h-4a1 1 0 0 1-1-1V4Zm2 .8V7h2.2L15 4.8ZM8.5 12h7v1.8h-7V12Zm0 3.4h7v1.8h-7v-1.8Z"/></svg>
-          Resume
-        </a>
-      </li>
+    <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Aditya Hansoty</a>
+    <ul class="menu mono">
+      <li><a href="#about" data-nav="about"><span class="n">01</span>About</a></li>
+      <li><a href="#work" data-nav="work"><span class="n">02</span>Work</a></li>
+      <li><a href="#publications" data-nav="publications"><span class="n">03</span>Publications</a></li>
+      <li class="cta"><a class="btn primary" href="resume.pdf" target="_blank" rel="noopener" data-fires>Resume</a></li>
     </ul>
   </div>
 </nav>
@@ -313,10 +337,10 @@
 <main>
 
   <header class="hero">
-    <div class="wrap hero-grid">
+    <div class="wrap">
       <div>
-        <p class="eyebrow">Biomedical Engineering @ University of Michigan</p>
-        <h1>Aditya Hansoty</h1>
+        <p class="eyebrow mono">Biomedical Engineering @ University of Michigan</p>
+        <h1>Aditya<span class="thin">Hansoty</span></h1>
         <p class="lede">Building at the intersection of the body and a machine: prosthetics, wearable robots, and medical devices.</p>
         <div class="actions">
           <a class="btn" href="mailto:adihansoty@gmail.com" data-fires>
@@ -337,147 +361,194 @@
           </a>
         </div>
       </div>
-      <figure class="portrait" style="margin:0">
-        <img src="media/portrait-2026.jpg" alt="Aditya Hansoty" onerror="this.remove()">
-      </figure>
-    </div>
-    <div class="wrap trace">
-      <canvas id="baseline" aria-hidden="true"></canvas>
+
+      <div class="hud"><i aria-hidden="true"></i>
+        <figure class="portrait" style="margin:0">
+          <img src="media/portrait-2026.jpg" alt="Aditya Hansoty" onerror="this.remove()">
+        </figure>
+        <ul class="spec">
+          <li><span class="k mono">Location</span><span class="v">Ann Arbor, MI</span></li>
+          <li><span class="k mono">Focus</span><span class="v">Prosthetics, wearable robots, medical devices</span></li>
+          <li><span class="k mono">Now</span><span class="v">Systems engineering intern, <a href="https://www.med.navy.mil/Naval-Medical-Research-Command/R-D-Commands/Naval-Medical-Research-Unit-San-Antonio/" target="_blank" rel="noopener">Department of the Navy</a></span></li>
+          <li><span class="k mono">Also</span><span class="v">Exoskeleton research intern, <a href="https://locolab.robotics.umich.edu/index.html" target="_blank" rel="noopener">Locomotor Control Systems Lab</a></span></li>
+        </ul>
+      </div>
     </div>
   </header>
 
+  <div class="scope" aria-hidden="true">
+    <canvas id="scope"></canvas>
+    <span class="tag mono"><b>Live</b> EMG channels · move across the trace or use a link to fire them</span>
+  </div>
+
   <section id="about" class="about">
     <div class="wrap">
-      <div class="sec-head"><span class="num">01</span><h2>About</h2></div>
+      <div class="sec-head reveal"><h2><span class="n">01</span>About</h2><span class="count mono">University of Michigan</span></div>
       <div class="about-grid">
-        <div>
-          <p>I'm a <strong>biomedical engineering</strong> student at the University of Michigan, minoring in computer science.</p>
+        <div class="reveal">
+          <p class="big">I'm a <strong>biomedical engineering</strong> student at the University of Michigan, minoring in computer science.</p>
           <p>My interests lie at the intersection of the body and a machine, with the goal of improving quality of life.</p>
+          <p>Currently, I'm a systems engineering intern with the <a href="https://www.med.navy.mil/Naval-Medical-Research-Command/R-D-Commands/Naval-Medical-Research-Unit-San-Antonio/" target="_blank" rel="noopener">Department of the Navy</a>, applying deep learning to medical device signal data, and an exoskeleton research intern at the <a href="https://locolab.robotics.umich.edu/index.html" target="_blank" rel="noopener">Locomotor Control Systems Lab</a> at the University of Michigan.</p>
           <p>Previously, I've worked as a summer research intern at the <a href="https://rehab-robotics.lab.uic.edu/" target="_blank" rel="noopener">University of Illinois Chicago Rehabilitation Robotics Lab</a> and at <a href="https://www.uchicagomedicine.org/cancer/education-outreach/student-education/high-school-undergraduate/researchstart" target="_blank" rel="noopener">UChicago Medicine</a>, where I contributed to projects spanning wearable robotics, prosthetic systems, and biomedical research.</p>
         </div>
-        <aside class="now" aria-label="Current roles">
-          <h3>Currently</h3>
-          <ul>
-            <li>
-              <span class="role">Systems engineering intern</span>
-              <span class="org"><a href="https://www.med.navy.mil/Naval-Medical-Research-Command/R-D-Commands/Naval-Medical-Research-Unit-San-Antonio/" target="_blank" rel="noopener">Department of the Navy</a>, applying deep learning to medical device signal data</span>
-            </li>
-            <li>
-              <span class="role">Exoskeleton research intern</span>
-              <span class="org"><a href="https://locolab.robotics.umich.edu/index.html" target="_blank" rel="noopener">Locomotor Control Systems Lab</a>, University of Michigan</span>
-            </li>
-          </ul>
-        </aside>
+        <ul class="roles reveal" aria-label="Roles">
+          <li><span class="k mono now">Now</span><span><span class="role">Systems engineering intern</span><span class="org">Department of the Navy, Naval Medical Research Unit San Antonio</span></span></li>
+          <li><span class="k mono now">Now</span><span><span class="role">Exoskeleton research intern</span><span class="org">Locomotor Control Systems Lab, University of Michigan</span></span></li>
+          <li><span class="k mono">Before</span><span><span class="role">Summer research intern</span><span class="org">Rehabilitation Robotics Lab, University of Illinois Chicago</span></span></li>
+          <li><span class="k mono">Before</span><span><span class="role">Summer research intern</span><span class="org">UChicago Medicine</span></span></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <section id="work" class="work">
     <div class="wrap">
-      <div class="sec-head"><span class="num">02</span><h2>Work</h2></div>
-      <div class="projects">
+      <div class="sec-head reveal"><h2><span class="n">02</span>Work</h2><span class="count mono">04 projects · click a row</span></div>
+      <ol class="index">
 
-        <article class="project" id="afp">
-          <figure class="media">
-            <video src="media/afp.mp4" poster="media/afp.jpg" muted loop playsinline preload="metadata" aria-label="Powered ankle-foot prosthesis on a treadmill"></video>
-          </figure>
-          <div class="body">
-            <p class="meta"><span class="idx">01</span><span>Rehabilitation Robotics Lab, UIC</span></p>
-            <h3>Ankle-foot prosthesis development</h3>
-            <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Threaded encoder caps designed in SolidWorks and CNC machined.</p>
-            <span class="status">Workshop paper, IROS 2026</span>
-            <ul class="tags"><li>SolidWorks</li><li>CNC</li><li>TwinCAT</li><li>Python</li><li>EMG / ECG</li><li>MATLAB</li></ul>
-            <div class="strip">
-              <button class="thumb" data-img="media/afp-lab.jpg" aria-label="Rehabilitation Robotics Lab, UIC"></button>
-              <button class="thumb" data-img="media/afp-encoder-cap.jpg" aria-label="Encoder cap, CAD"></button>
-              <button class="thumb" data-img="media/afp-encoder-base.jpg" aria-label="Encoder base, CAD"></button>
+        <li class="row open reveal" data-preview="media/afp.jpg">
+          <button class="row-head" aria-expanded="true" aria-controls="p-afp">
+            <span class="idx">01</span>
+            <span class="title">Ankle-foot prosthesis development</span>
+            <span class="side mono"><span class="org">Rehabilitation Robotics Lab, UIC</span><span class="status">Workshop paper, IROS 2026</span></span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="panel" id="p-afp"><div>
+            <div class="panel-in">
+              <figure class="media" style="margin:0">
+                <video src="media/afp.mp4" poster="media/afp.jpg" muted loop playsinline preload="metadata" aria-label="Powered ankle-foot prosthesis on a treadmill"></video>
+              </figure>
+              <div class="panel-body">
+                <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Threaded encoder caps designed in SolidWorks and CNC machined.</p>
+                <ul class="tags"><li>SolidWorks</li><li>CNC</li><li>TwinCAT</li><li>Python</li><li>EMG / ECG</li><li>MATLAB</li></ul>
+                <div>
+                  <p class="strip-label mono">Gallery</p>
+                  <div class="strip">
+                    <button class="thumb" data-img="media/afp-lab.jpg" aria-label="Rehabilitation Robotics Lab, UIC"></button>
+                    <button class="thumb" data-img="media/afp-encoder-cap.jpg" aria-label="Encoder cap, CAD"></button>
+                    <button class="thumb" data-img="media/afp-encoder-base.jpg" aria-label="Encoder base, CAD"></button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
+          </div></div>
+        </li>
 
-        <article class="project" id="ar">
-          <figure class="media">
-            <video src="media/ar-gait.mp4" poster="media/ar-gait.jpg" muted loop playsinline preload="metadata" aria-label="Gait feedback streamed to a HoloLens 2"></video>
-          </figure>
-          <div class="body">
-            <p class="meta"><span class="idx">02</span><span>Rehabilitation Robotics Lab, UIC</span></p>
-            <h3>Augmented Reality Feedback</h3>
-            <p class="blurb">A signal-agnostic <a href="https://github.com/ahansoty/ar-visual-feedback-platform" target="_blank" rel="noopener">open source AR platform</a> that pixel-streams arbitrary LSL biosignals into a HoloLens 2; sole developer. Motion-to-photon latency was 120 ms on the headset versus 119 ms on a wired monitor (validated against injected delays up to 1 s), and in a two-participant pilot, AR step-length guidance reduced gait asymmetry by 41% and 53%.</p>
-            <span class="status">Submitted to ICRA 2027</span>
-            <ul class="tags"><li>Unity</li><li>C#</li><li>Python</li><li>Vicon</li><li>WebSockets</li></ul>
-            <div class="strip">
-              <button class="thumb" data-video="media/ar-latency.mp4" data-poster="media/ar-latency.jpg" aria-label="Latency test, bar driven by heel height"></button>
-              <button class="thumb" data-img="media/ar-hololens.jpg" aria-label="HoloLens 2"></button>
+        <li class="row reveal" data-preview="media/ar-gait.jpg">
+          <button class="row-head" aria-expanded="false" aria-controls="p-ar">
+            <span class="idx">02</span>
+            <span class="title">Augmented Reality Feedback</span>
+            <span class="side mono"><span class="org">Rehabilitation Robotics Lab, UIC</span><span class="status">Submitted to ICRA 2027</span></span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="panel" id="p-ar"><div>
+            <div class="panel-in">
+              <figure class="media" style="margin:0">
+                <video src="media/ar-gait.mp4" poster="media/ar-gait.jpg" muted loop playsinline preload="metadata" aria-label="Gait feedback streamed to a HoloLens 2"></video>
+              </figure>
+              <div class="panel-body">
+                <p class="blurb">A signal-agnostic <a href="https://github.com/ahansoty/ar-visual-feedback-platform" target="_blank" rel="noopener">open source AR platform</a> that pixel-streams arbitrary LSL biosignals into a HoloLens 2; sole developer. Motion-to-photon latency was 120 ms on the headset versus 119 ms on a wired monitor (validated against injected delays up to 1 s), and in a two-participant pilot, AR step-length guidance reduced gait asymmetry by 41% and 53%.</p>
+                <ul class="tags"><li>Unity</li><li>C#</li><li>Python</li><li>Vicon</li><li>WebSockets</li></ul>
+                <div>
+                  <p class="strip-label mono">Gallery</p>
+                  <div class="strip">
+                    <button class="thumb" data-video="media/ar-latency.mp4" data-poster="media/ar-latency.jpg" aria-label="Latency test, bar driven by heel height"></button>
+                    <button class="thumb" data-img="media/ar-hololens.jpg" aria-label="HoloLens 2"></button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
+          </div></div>
+        </li>
 
-        <article class="project" id="emg">
-          <figure class="media">
-            <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg" muted loop playsinline preload="metadata" aria-label="EMG-controlled gripper demonstration"></video>
-          </figure>
-          <div class="body">
-            <p class="meta"><span class="idx">03</span><span>Personal project</span></p>
-            <h3>EMG-controlled prosthetic gripper</h3>
-            <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An <a href="https://github.com/ahansoty/emg-gesture-gripper" target="_blank" rel="noopener">LDA classifier</a> on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
-            <ul class="tags"><li>SolidWorks</li><li>Arduino</li><li>Python</li><li>scikit-learn</li></ul>
-            <div class="strip">
-              <button class="thumb" data-video="media/emg-grasp.mp4" data-poster="media/emg-grasp.jpg" aria-label="Grasping a container"></button>
-              <button class="thumb" data-img="media/emg-wiring.jpg" aria-label="Schematic, signal and power"></button>
-              <button class="thumb" data-img="media/emg-assembly.jpg" aria-label="Gripper assembly, CAD"></button>
-              <button class="thumb" data-img="media/emg-arm1.jpg" aria-label="Linkage arm, left"></button>
-              <button class="thumb" data-img="media/emg-arm2.jpg" aria-label="Linkage arm, right"></button>
-              <button class="thumb" data-img="media/emg-bottom.jpg" aria-label="Housing, base plate"></button>
-              <button class="thumb" data-img="media/emg-lid.jpg" aria-label="Housing, lid"></button>
+        <li class="row reveal" data-preview="media/emg-demo.jpg">
+          <button class="row-head" aria-expanded="false" aria-controls="p-emg">
+            <span class="idx">03</span>
+            <span class="title">EMG-controlled prosthetic gripper</span>
+            <span class="side mono"><span class="org">Personal project</span></span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="panel" id="p-emg"><div>
+            <div class="panel-in">
+              <figure class="media" style="margin:0">
+                <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg" muted loop playsinline preload="metadata" aria-label="EMG-controlled gripper demonstration"></video>
+              </figure>
+              <div class="panel-body">
+                <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An <a href="https://github.com/ahansoty/emg-gesture-gripper" target="_blank" rel="noopener">LDA classifier</a> on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
+                <ul class="tags"><li>SolidWorks</li><li>Arduino</li><li>Python</li><li>scikit-learn</li></ul>
+                <div>
+                  <p class="strip-label mono">Gallery</p>
+                  <div class="strip">
+                    <button class="thumb" data-video="media/emg-grasp.mp4" data-poster="media/emg-grasp.jpg" aria-label="Grasping a container"></button>
+                    <button class="thumb" data-img="media/emg-wiring.jpg" aria-label="Schematic, signal and power"></button>
+                    <button class="thumb" data-img="media/emg-assembly.jpg" aria-label="Gripper assembly, CAD"></button>
+                    <button class="thumb" data-img="media/emg-arm1.jpg" aria-label="Linkage arm, left"></button>
+                    <button class="thumb" data-img="media/emg-arm2.jpg" aria-label="Linkage arm, right"></button>
+                    <button class="thumb" data-img="media/emg-bottom.jpg" aria-label="Housing, base plate"></button>
+                    <button class="thumb" data-img="media/emg-lid.jpg" aria-label="Housing, lid"></button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
+          </div></div>
+        </li>
 
-        <article class="project" id="tibial">
-          <figure class="media">
-            <img src="media/tibial-plate-cover-v2.png" alt="SolidWorks model of the 10-hole Ti-6Al-4V tibial locking compression plate" data-zoom>
-          </figure>
-          <div class="body">
-            <p class="meta"><span class="idx">04</span><span>Personal project</span></p>
-            <h3>Tibial Fracture Fixation Plate (ASTM F382)</h3>
-            <p class="blurb">Parametric <a href="https://github.com/ahansoty/tibial-plate-f382" target="_blank" rel="noopener">locking compression plate</a> designed in SolidWorks and validated to ASTM F382 via finite element analysis. Bending FOS 1.73, torsion FOS 2.36. Parallel Simulink model simulates fracture healing load transfer over 12 weeks.</p>
-            <ul class="tags"><li>SolidWorks</li><li>FEA</li><li>ASTM</li><li>Simulink</li></ul>
-            <div class="strip">
-              <button class="thumb" data-img="media/tibial-plate-assembly-iso.png" aria-label="Plate on a fractured tibia model, CAD"></button>
-              <button class="thumb" data-img="media/tibial-plate-plate-iso.png" aria-label="Parametric 10-hole locking plate, CAD"></button>
-              <button class="thumb" data-img="media/tibial-plate-fea-bending.png" aria-label="Four-point bending (ASTM F382), von Mises stress"></button>
-              <button class="thumb" data-img="media/tibial-plate-vonmises.png" aria-label="Four-point bending, von Mises stress, top view"></button>
-              <button class="thumb" data-img="media/tibial-plate-torsion.png" aria-label="Torsion, 10 N·m, stress intensity"></button>
-              <button class="thumb" data-img="media/tibial-plate-deflection.png" aria-label="Four-point bending, resultant displacement"></button>
-              <button class="thumb" data-img="media/tibial-plate-simulink-diagram.png" aria-label="Simulink healing model, block diagram"></button>
-              <button class="thumb" data-img="media/tibial-plate-simulink-results.png" aria-label="Plate stress and load share over 12 weeks of healing"></button>
+        <li class="row reveal" data-preview="media/tibial-plate-cover.png">
+          <button class="row-head" aria-expanded="false" aria-controls="p-tibial">
+            <span class="idx">04</span>
+            <span class="title">Tibial Fracture Fixation Plate (ASTM F382)</span>
+            <span class="side mono"><span class="org">Personal project</span></span>
+            <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="panel" id="p-tibial"><div>
+            <div class="panel-in">
+              <figure class="media" style="margin:0">
+                <img src="media/tibial-plate-cover.png" alt="SolidWorks model of the 10-hole Ti-6Al-4V tibial locking compression plate" data-zoom>
+              </figure>
+              <div class="panel-body">
+                <p class="blurb">Parametric <a href="https://github.com/ahansoty/tibial-plate-f382" target="_blank" rel="noopener">locking compression plate</a> designed in SolidWorks and validated to ASTM F382 via finite element analysis. Bending FOS 1.73, torsion FOS 2.36. Parallel Simulink model simulates fracture healing load transfer over 12 weeks.</p>
+                <ul class="tags"><li>SolidWorks</li><li>FEA</li><li>ASTM</li><li>Simulink</li></ul>
+                <div>
+                  <p class="strip-label mono">Gallery</p>
+                  <div class="strip">
+                    <button class="thumb" data-img="media/tibial-plate-assembly-iso.png" aria-label="Plate on a fractured tibia model, CAD"></button>
+                    <button class="thumb" data-img="media/tibial-plate-plate-iso.png" aria-label="Parametric 10-hole locking plate, CAD"></button>
+                    <button class="thumb" data-img="media/tibial-plate-fea-bending.png" aria-label="Four-point bending (ASTM F382), von Mises stress"></button>
+                    <button class="thumb" data-img="media/tibial-plate-vonmises.png" aria-label="Four-point bending, von Mises stress, top view"></button>
+                    <button class="thumb" data-img="media/tibial-plate-torsion.png" aria-label="Torsion, 10 N·m, stress intensity"></button>
+                    <button class="thumb" data-img="media/tibial-plate-deflection.png" aria-label="Four-point bending, resultant displacement"></button>
+                    <button class="thumb" data-img="media/tibial-plate-simulink-diagram.png" aria-label="Simulink healing model, block diagram"></button>
+                    <button class="thumb" data-img="media/tibial-plate-simulink-results.png" aria-label="Plate stress and load share over 12 weeks of healing"></button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
+          </div></div>
+        </li>
 
-      </div>
+      </ol>
     </div>
   </section>
 
   <section id="publications" class="pubs">
     <div class="wrap">
-      <div class="sec-head"><span class="num">03</span><h2>Publications</h2></div>
+      <div class="sec-head reveal"><h2><span class="n">03</span>Publications</h2><span class="count mono">02 papers</span></div>
       <ol>
-        <li class="pub">
+        <li class="pub reveal">
           <span class="n">01</span>
           <div>
             <p class="t">Pixel-Streaming Augmented Reality for Real-Time Gait Biofeedback During Wearable-Robot Training</p>
             <p class="a"><strong>Hansoty A.</strong>, Vyas R., Kim M.</p>
-            <span class="v"><b>ICRA 2027</b> · Submitted</span>
           </div>
+          <span class="v mono"><b>ICRA 2027</b><br>Submitted</span>
         </li>
-        <li class="pub">
+        <li class="pub reveal">
           <span class="n">02</span>
           <div>
             <p class="t">Visual Guidance During Human-in-the-Loop Optimization of Ankle-Foot Prosthesis Stiffness</p>
             <p class="a">Vyas R., Son C., Jeong H., <strong>Hansoty A.</strong>, Kenny T.</p>
-            <span class="v"><b>IROS 2026</b> · Workshop: State of the Art in Robotic Leg Prostheses</span>
           </div>
+          <span class="v mono"><b>IROS 2026</b><br>Workshop: State of the Art in Robotic Leg Prostheses</span>
         </li>
       </ol>
     </div>
@@ -486,7 +557,7 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap mono">
     <span>Aditya Hansoty · Ann Arbor, MI</span>
     <ul>
       <li><a href="mailto:adihansoty@gmail.com">Email</a></li>
@@ -497,14 +568,26 @@
   </div>
 </footer>
 
+<div class="preview" id="preview" aria-hidden="true"></div>
+
 <script>
 (function () {
+  document.documentElement.classList.add('js');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  // whatever happens with observers, nothing stays hidden for long
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 1400);
 
-  /* ---------------- top bar ---------------- */
+  /* ---------------- top bar + progress ---------------- */
   const top = document.getElementById('top');
-  const onScroll = () => top.classList.toggle('scrolled', window.scrollY > 8);
+  const bar = document.getElementById('progress');
+  function onScroll() {
+    top.classList.toggle('scrolled', window.scrollY > 24);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? Math.min(1, window.scrollY / max) * 100 : 0) + '%';
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
   onScroll();
 
   const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
@@ -514,37 +597,74 @@
         if (!e.isIntersecting) return;
         navLinks.forEach(a => a.classList.toggle('active', a.dataset.nav === e.target.id));
       });
-    }, { rootMargin: '-45% 0px -45% 0px' });
+    }, { rootMargin: '-40% 0px -50% 0px' });
     ['about', 'work', 'publications'].forEach(id => io.observe(document.getElementById(id)));
+
+    const rio = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => rio.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
 
-  /* ---------------- videos play only while on screen ---------------- */
-  const videos = Array.from(document.querySelectorAll('.media video'));
-  function playIfVisible(v, visible) {
-    if (visible) { const pr = v.play(); if (pr) pr.catch(() => {}); }
+  /* ---------------- the index: expand / collapse rows ---------------- */
+  const rows = Array.from(document.querySelectorAll('.row'));
+  function syncVideo(row) {
+    const v = row.querySelector('video');
+    if (!v) return;
+    if (row.classList.contains('open')) { const pr = v.play(); if (pr) pr.catch(() => {}); }
     else if (!v.paused) v.pause();
   }
-  if ('IntersectionObserver' in window) {
-    const vio = new IntersectionObserver(entries =>
-      entries.forEach(e => playIfVisible(e.target, e.isIntersecting)), { threshold: .25 });
-    videos.forEach(v => vio.observe(v));
-  } else {
-    videos.forEach(v => playIfVisible(v, true));
+  function setOpen(row, open) {
+    row.classList.toggle('open', open);
+    row.querySelector('.row-head').setAttribute('aria-expanded', open);
+    syncVideo(row);
   }
-  ['pointerdown', 'touchstart', 'keydown', 'scroll'].forEach(ev =>
-    window.addEventListener(ev, () => videos.forEach(v => {
-      const r = v.getBoundingClientRect();
-      playIfVisible(v, r.bottom > 0 && r.top < window.innerHeight);
-    }), { once: true, passive: true }));
+  rows.forEach(row => {
+    row.querySelector('.row-head').addEventListener('click', () => {
+      const open = !row.classList.contains('open');
+      rows.forEach(r => { if (r !== row && r.classList.contains('open')) setOpen(r, false); });
+      setOpen(row, open);
+      contract(1);
+      if (open) setTimeout(() => {
+        const y = row.getBoundingClientRect().top + window.scrollY - 92;
+        if (row.getBoundingClientRect().top < 80) window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      }, 60);
+    });
+  });
+  rows.forEach(syncVideo);
+  ['pointerdown', 'touchstart', 'keydown'].forEach(ev =>
+    window.addEventListener(ev, () => rows.forEach(syncVideo), { once: true, passive: true }));
+
+  /* cursor-following preview for collapsed rows */
+  const preview = document.getElementById('preview');
+  if (fine) {
+    rows.forEach(row => {
+      const head = row.querySelector('.row-head');
+      head.addEventListener('mouseenter', () => {
+        if (row.classList.contains('open')) return;
+        preview.style.backgroundImage = 'url("' + row.dataset.preview + '")';
+        preview.classList.add('on');
+        contract(0.4);
+      });
+      head.addEventListener('mouseleave', () => preview.classList.remove('on'));
+      head.addEventListener('click', () => preview.classList.remove('on'));
+    });
+    window.addEventListener('mousemove', e => {
+      if (!preview.classList.contains('on')) return;
+      preview.style.left = (e.clientX + 24 + 150) + 'px';
+      preview.style.top = e.clientY + 'px';
+    }, { passive: true });
+  }
 
   /* ---------------- lightbox ---------------- */
   const lb = document.createElement('div');
   lb.className = 'lightbox';
-  lb.innerHTML = '<img alt=""><video playsinline loop controls></video><p class="lb-cap"></p>'
+  lb.innerHTML = '<img alt=""><video playsinline loop controls></video><p class="lb-cap mono"></p>'
                + '<button class="lb-nav lb-prev" aria-label="Previous">‹</button>'
                + '<button class="lb-nav lb-next" aria-label="Next">›</button>';
   document.body.appendChild(lb);
-
   let lbSet = [], lbAt = 0;
 
   function closeLightbox() {
@@ -555,9 +675,7 @@
   function showAt(k) {
     if (!lbSet.length) return;
     lbAt = (k + lbSet.length) % lbSet.length;
-    const t = lbSet[lbAt];
-    const im = lb.querySelector('img');
-    const vid = lb.querySelector('video');
+    const t = lbSet[lbAt], im = lb.querySelector('img'), vid = lb.querySelector('video');
     if (t.video) {
       im.classList.add('hide'); vid.classList.remove('hide');
       vid.src = t.video; if (t.poster) vid.poster = t.poster;
@@ -583,84 +701,74 @@
     if (e.key === 'ArrowLeft') showAt(lbAt - 1);
   });
 
-  document.querySelectorAll('.project').forEach(card => {
-    const thumbs = Array.from(card.querySelectorAll('.thumb'));
-    const items = thumbs.map(t => ({
-      img: t.dataset.img, video: t.dataset.video, poster: t.dataset.poster, label: t.getAttribute('aria-label')
-    }));
+  rows.forEach(row => {
+    const thumbs = Array.from(row.querySelectorAll('.thumb'));
+    const items = thumbs.map(t => ({ img: t.dataset.img, video: t.dataset.video, poster: t.dataset.poster, label: t.getAttribute('aria-label') }));
     thumbs.forEach((t, k) => {
       t.style.backgroundImage = 'url("' + (t.dataset.img || t.dataset.poster) + '")';
       t.addEventListener('click', e => { e.stopPropagation(); openSet(items, k); });
     });
-    // a still cover opens the gallery starting with the cover itself
-    const cover = card.querySelector('.media img[data-zoom]');
+    const cover = row.querySelector('.media img[data-zoom]');
     if (cover) {
       const all = [{ img: cover.getAttribute('src'), label: cover.getAttribute('alt') }].concat(items);
       cover.addEventListener('click', () => openSet(all, 0));
     }
   });
 
-  /* ---------------- signal in ----------------
-     Resting muscle is never perfectly flat, and it fires when it does work.
-     The line under the hero is quiet until the page is used. */
-  const cvs = document.getElementById('baseline');
+  /* ---------------- scope: three live EMG channels ----------------
+     Resting muscle is never perfectly flat, and it fires when it does work. */
+  const cvs = document.getElementById('scope');
   const ctx = cvs.getContext('2d');
-  let W = 0, H = 0, buf = [];
+  const CH = [{ buf: [], env: 0, hold: 0, gain: 1.0, alpha: .95 },
+              { buf: [], env: 0, hold: 0, gain: .7,  alpha: .5 },
+              { buf: [], env: 0, hold: 0, gain: .45, alpha: .28 }];
+  let W = 0, H = 0;
 
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = cvs.clientWidth; H = cvs.clientHeight;
-    cvs.width = Math.round(W * dpr);
-    cvs.height = Math.round(H * dpr);
+    cvs.width = Math.round(W * dpr); cvs.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.max(2, Math.round(W / 2)), old = buf;
-    buf = new Array(n).fill(0);
-    for (let k = 0; k < Math.min(n, old.length); k++) buf[k] = old[k];
+    const n = Math.max(2, Math.round(W / 2));
+    CH.forEach(c => { const old = c.buf; c.buf = new Array(n).fill(0); for (let k = 0; k < Math.min(n, old.length); k++) c.buf[k] = old[k]; });
   }
-
-  let env = 0, hold = 0;
   function contract(strength) {
     if (reduce) return;
-    env = Math.max(env, strength);
-    hold = Math.round(7 * strength);
+    CH.forEach((c, i) => { const s = strength * (1 - i * .25); c.env = Math.max(c.env, s); c.hold = Math.max(c.hold, Math.round(8 * s)); });
   }
-  document.querySelectorAll('[data-fires], .menu a, .thumb, .project').forEach(el =>
-    el.addEventListener('mouseenter', () => contract(0.5)));
+  document.querySelectorAll('[data-fires], .menu a, .thumb, .btn').forEach(el => el.addEventListener('mouseenter', () => contract(0.55)));
   let lastMove = 0;
-  cvs.addEventListener('mousemove', () => {
-    const t = performance.now();
-    if (t - lastMove > 120) { lastMove = t; contract(0.6); }
-  });
+  cvs.addEventListener('mousemove', () => { const t = performance.now(); if (t - lastMove > 100) { lastMove = t; contract(0.7); } });
 
-  function sample() {
-    if (hold > 0) hold--; else env *= 0.955;
-    const rest = (Math.random() - 0.5) * 0.07;
-    const spike = env > 0.01 ? (Math.random() - 0.5) * 2 * env : 0;
-    return Math.max(-1, Math.min(1, rest + spike));
+  function sample(c) {
+    if (c.hold > 0) c.hold--; else c.env *= 0.955;
+    const rest = (Math.random() - 0.5) * 0.08;
+    const spike = c.env > 0.01 ? (Math.random() - 0.5) * 2 * c.env : 0;
+    return Math.max(-1, Math.min(1, rest + spike)) * c.gain;
   }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(255,255,255,.05)'; ctx.lineWidth = 1;
+    for (let x = 0.5; x < W; x += 48) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
     const mid = Math.round(H / 2) + 0.5;
-    ctx.strokeStyle = '#26262B';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,.12)';
     ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(W, mid); ctx.stroke();
-
-    ctx.strokeStyle = '#FF5A1F';
-    ctx.globalAlpha = .9;
-    ctx.lineWidth = 1.4;
     ctx.lineJoin = 'round';
-    ctx.beginPath();
-    for (let k = 0; k < buf.length; k++) {
-      const x = (k / (buf.length - 1)) * W;
-      const y = mid - buf[k] * (mid - 3);
-      k === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    for (let i = CH.length - 1; i >= 0; i--) {
+      const c = CH[i];
+      ctx.strokeStyle = '#B4FF3A'; ctx.globalAlpha = c.alpha; ctx.lineWidth = i === 0 ? 1.5 : 1;
+      ctx.beginPath();
+      for (let k = 0; k < c.buf.length; k++) {
+        const x = (k / (c.buf.length - 1)) * W;
+        const y = mid - c.buf[k] * (mid - 6);
+        k === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
     }
-    ctx.stroke();
     ctx.globalAlpha = 1;
   }
-
-  function tick() { buf.unshift(sample()); buf.pop(); draw(); requestAnimationFrame(tick); }
+  function tick() { CH.forEach(c => { c.buf.unshift(sample(c)); c.buf.pop(); }); draw(); requestAnimationFrame(tick); }
 
   resize();
   window.addEventListener('resize', resize);
