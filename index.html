@@ -442,39 +442,6 @@
     white-space: nowrap;
   }
 
-  /* ---------- publications ---------- */
-
-  .pubs{ margin-top: 62px; }
-  .publist{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-width: 58ch;
-  }
-  .publist li{
-    padding: 18px 0 20px;
-    border-top: 1px solid var(--rule);
-  }
-  .publist li:last-child{ border-bottom: 1px solid var(--rule); }
-  .pub-title{
-    margin: 0 0 4px;
-    color: var(--ink);
-    font-weight: 500;
-    line-height: 1.4;
-  }
-  .pub-authors{ margin: 0 0 9px; }
-  .pub-authors strong{ font-weight: 500; color: var(--ink); }
-  .pub-venue{
-    font-family: var(--mono);
-    font-size: 10.5px;
-    font-weight: 500;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0;
-  }
-  .pub-venue b{ color: var(--signal); font-weight: 500; }
-
   /* ---------- carousel controls, always in view ---------- */
 
   .controls{
@@ -547,7 +514,6 @@
     .chain canvas{ height: 28px; }
     .about{ margin-top: 46px; }
     .work{ margin-top: 48px; }
-    .pubs{ margin-top: 48px; }
     .portrait{ width: 88px; }
     .arrows button{ width: 44px; height: 44px; }
     .viewport{ margin: 0 -24px; padding: 0 24px; }
@@ -732,24 +698,6 @@
     </div>
   </section>
 
-  <section class="row pubs">
-    <p class="rail">Publications</p>
-    <div class="content">
-      <ol class="publist">
-        <li>
-          <p class="pub-title">Pixel-Streaming Augmented Reality for Real-Time Gait Biofeedback During Wearable-Robot Training</p>
-          <p class="pub-authors"><strong>Hansoty A.</strong>, Vyas R., Kim M.</p>
-          <p class="pub-venue"><b>ICRA 2027</b> &nbsp;·&nbsp; Submitted</p>
-        </li>
-        <li>
-          <p class="pub-title">Visual Guidance During Human-in-the-Loop Optimization of Ankle-Foot Prosthesis Stiffness</p>
-          <p class="pub-authors">Vyas R., Son C., Jeong H., <strong>Hansoty A.</strong>, Kenny T.</p>
-          <p class="pub-venue"><b>IROS 2026</b> &nbsp;·&nbsp; Workshop: State of the Art in Robotic Leg Prostheses</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
 </main>
 
 <script>
@@ -907,7 +855,6 @@
   const carriage = document.querySelector('.carriage');
   const about    = document.querySelector('.about');
   const work     = document.querySelector('.work');
-  const pubs     = document.querySelector('.pubs');
 
   function offsetIn(el) {
     return el.getBoundingClientRect().top + window.scrollY;
@@ -970,7 +917,7 @@
         if (stop) stop.classList.toggle('active', e.isIntersecting);
       });
     }, { rootMargin: '-40% 0px -40% 0px' });
-    [about, work, pubs].forEach(s => io.observe(s));
+    [about, work].forEach(s => io.observe(s));
   }
 
   /* ---------------- signal in ----------------
