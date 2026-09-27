@@ -442,6 +442,39 @@
     white-space: nowrap;
   }
 
+  /* ---------- publications ---------- */
+
+  .pubs{ margin-top: 62px; }
+  .publist{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 58ch;
+  }
+  .publist li{
+    padding: 18px 0 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .publist li:last-child{ border-bottom: 1px solid var(--rule); }
+  .pub-title{
+    margin: 0 0 4px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .pub-authors{ margin: 0 0 9px; }
+  .pub-authors strong{ font-weight: 500; color: var(--ink); }
+  .pub-venue{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .pub-venue b{ color: var(--signal); font-weight: 500; }
+
   /* ---------- carousel controls, always in view ---------- */
 
   .controls{
@@ -514,6 +547,7 @@
     .chain canvas{ height: 28px; }
     .about{ margin-top: 46px; }
     .work{ margin-top: 48px; }
+    .pubs{ margin-top: 48px; }
     .portrait{ width: 88px; }
     .arrows button{ width: 44px; height: 44px; }
     .viewport{ margin: 0 -24px; padding: 0 24px; }
@@ -626,7 +660,7 @@
                 <p class="meta"><b>01</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Ankle-foot prosthesis development</h3>
                 <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Threaded encoder caps designed in SolidWorks and CNC machined.</p>
-                <p class="tags">SolidWorks · CNC · TwinCAT · Python · EMG / ECG · MATLAB<span class="note">Preparing manuscript for submission</span></p>
+                <p class="tags">SolidWorks · CNC · TwinCAT · Python · EMG / ECG · MATLAB<span class="note">Workshop paper, IROS 2026</span></p>
               </div>
             </article>
 
@@ -643,7 +677,7 @@
                 <p class="meta"><b>02</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Augmented Reality Feedback</h3>
                 <p class="blurb">A signal-agnostic <a href="https://github.com/ahansoty/ar-visual-feedback-platform" target="_blank" rel="noopener">open source AR platform</a> that pixel-streams arbitrary LSL biosignals into a HoloLens 2; sole developer. Motion-to-photon latency was 120 ms on the headset versus 119 ms on a wired monitor (validated against injected delays up to 1 s), and in a two-participant pilot, AR step-length guidance reduced gait asymmetry by 41% and 53%.</p>
-                <p class="tags">Unity · C# · Python · Vicon · WebSockets<span class="note">Manuscript submitted to ICRA 2027</span></p>
+                <p class="tags">Unity · C# · Python · Vicon · WebSockets<span class="note">Submitted to ICRA 2027</span></p>
               </div>
             </article>
 
@@ -695,6 +729,24 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <section class="row pubs">
+    <p class="rail">Publications</p>
+    <div class="content">
+      <ol class="publist">
+        <li>
+          <p class="pub-title">Pixel-Streaming Augmented Reality for Real-Time Gait Biofeedback During Wearable-Robot Training</p>
+          <p class="pub-authors"><strong>Hansoty A.</strong>, Vyas R., Kim M.</p>
+          <p class="pub-venue"><b>ICRA 2027</b> &nbsp;·&nbsp; Submitted</p>
+        </li>
+        <li>
+          <p class="pub-title">Visual Guidance During Human-in-the-Loop Optimization of Ankle-Foot Prosthesis Stiffness</p>
+          <p class="pub-authors">Vyas R., Son C., Jeong H., <strong>Hansoty A.</strong>, Kenny T.</p>
+          <p class="pub-venue"><b>IROS 2026</b> &nbsp;·&nbsp; Workshop: State of the Art in Robotic Leg Prostheses</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -855,6 +907,7 @@
   const carriage = document.querySelector('.carriage');
   const about    = document.querySelector('.about');
   const work     = document.querySelector('.work');
+  const pubs     = document.querySelector('.pubs');
 
   function offsetIn(el) {
     return el.getBoundingClientRect().top + window.scrollY;
@@ -917,7 +970,7 @@
         if (stop) stop.classList.toggle('active', e.isIntersecting);
       });
     }, { rootMargin: '-40% 0px -40% 0px' });
-    [about, work].forEach(s => io.observe(s));
+    [about, work, pubs].forEach(s => io.observe(s));
   }
 
   /* ---------------- signal in ----------------
