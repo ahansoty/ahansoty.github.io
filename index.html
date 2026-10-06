@@ -110,7 +110,7 @@
     grid-template-columns: var(--rail) 1fr;
     column-gap: var(--gap);
   }
-  .row > .content{ grid-column: 2; }
+  .row > .content{ grid-column: 2; min-width: 0; }
 
   .rail{
     grid-column: 1;
@@ -597,7 +597,8 @@
           <button data-go="1" aria-label="Project 2"><i></i></button>
           <button data-go="2" aria-label="Project 3"><i></i></button>
           <button data-go="3" aria-label="Project 4"><i></i></button>
-          <span class="count"><b id="cur">01</b> / 04</span>
+          <button data-go="4" aria-label="Project 5"><i></i></button>
+          <span class="count"><b id="cur">01</b> / 05</span>
         </div>
         <div class="arrows">
           <button id="prev" aria-label="Previous project">
@@ -612,7 +613,7 @@
         <div class="viewport">
           <div class="track" id="track">
 
-            <article class="card" role="group" aria-label="Project 1 of 4">
+            <article class="card" role="group" aria-label="Project 1 of 5">
               <figure class="media">
                 <video src="media/afp.mp4" poster="media/afp.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
@@ -623,14 +624,14 @@
                 <button class="thumb" data-img="media/afp-encoder-base.jpg" aria-label="Encoder base, CAD"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>01</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
+                <p class="meta"><b>01</b>/05 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Ankle-foot prosthesis development</h3>
                 <p class="blurb">A powered ankle-foot prosthesis taken through 10 human subject trials: TwinCAT operation, Vicon calibration, and synchronized EMG, ECG, and metabolic cost capture. Threaded encoder caps designed in SolidWorks and CNC machined.</p>
                 <p class="tags">SolidWorks · CNC · TwinCAT · Python · EMG / ECG · MATLAB<span class="note">Workshop paper, IROS 2026</span></p>
               </div>
             </article>
 
-            <article class="card" role="group" aria-label="Project 2 of 4">
+            <article class="card" role="group" aria-label="Project 2 of 5">
               <figure class="media">
                 <video src="media/ar-gait.mp4" poster="media/ar-gait.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
@@ -640,36 +641,34 @@
                 <button class="thumb" data-img="media/ar-hololens.jpg" aria-label="HoloLens 2"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>02</b>/04 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
+                <p class="meta"><b>02</b>/05 &nbsp;·&nbsp; Rehabilitation Robotics Lab, UIC</p>
                 <h3>Augmented Reality Feedback</h3>
                 <p class="blurb">A signal-agnostic <a href="https://github.com/ahansoty/ar-visual-feedback-platform" target="_blank" rel="noopener">open source AR platform</a> that pixel-streams arbitrary LSL biosignals into a HoloLens 2; sole developer. Motion-to-photon latency was 120 ms on the headset versus 119 ms on a wired monitor (validated against injected delays up to 1 s), and in a two-participant pilot, AR step-length guidance reduced gait asymmetry by 41% and 53%.</p>
                 <p class="tags">Unity · C# · Python · Vicon · WebSockets<span class="note">Submitted to ICRA 2027</span></p>
               </div>
             </article>
 
-            <article class="card" role="group" aria-label="Project 3 of 4">
+            <article class="card" role="group" aria-label="Project 3 of 5">
               <figure class="media">
-                <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg"
+                <video src="media/taptrack.mp4" poster="media/taptrack.jpg"
                        autoplay muted loop playsinline preload="metadata"></video>
               </figure>
               <div class="strip">
-                <button class="thumb" data-video="media/emg-grasp.mp4" data-poster="media/emg-grasp.jpg" aria-label="Grasping a container"></button>
-                <button class="thumb" data-img="media/emg-wiring.jpg" aria-label="Schematic, signal and power"></button>
-                <button class="thumb" data-img="media/emg-assembly.jpg" aria-label="Gripper assembly, CAD"></button>
-                <button class="thumb" data-img="media/emg-arm1.jpg" aria-label="Linkage arm, left"></button>
-                <button class="thumb" data-img="media/emg-arm2.jpg" aria-label="Linkage arm, right"></button>
-                <button class="thumb" data-img="media/emg-bottom.jpg" aria-label="Housing, base plate"></button>
-                <button class="thumb" data-img="media/emg-lid.jpg" aria-label="Housing, lid"></button>
+                <button class="thumb" data-video="media/taptrack-voice.mp4" data-poster="media/taptrack-voice.jpg" aria-label="Voice test on the wrist"></button>
+                <button class="thumb" data-img="media/taptrack-dashboard.jpg" aria-label="Clinician dashboard, live from the wrist"></button>
+                <button class="thumb" data-img="media/taptrack-dose-response.jpg" aria-label="Dose response and daily heatmap, 14 days"></button>
+                <button class="thumb" data-img="media/taptrack-wrist-screens.jpg" aria-label="Wrist screen designs"></button>
+                <button class="thumb" data-img="media/taptrack-stack.jpg" aria-label="System architecture"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>03</b>/04 &nbsp;·&nbsp; Personal project</p>
-                <h3>EMG-controlled prosthetic gripper</h3>
-                <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An <a href="https://github.com/ahansoty/emg-gesture-gripper" target="_blank" rel="noopener">LDA classifier</a> on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
-                <p class="tags">SolidWorks · Arduino · Python · scikit-learn</p>
+                <p class="meta"><b>03</b>/05 &nbsp;·&nbsp; MHacks 2026</p>
+                <h3>TapTrack PD</h3>
+                <p class="blurb">A <a href="https://taptrack.tech" target="_blank" rel="noopener">wrist-worn Parkinson's tracker</a> on a FREE-WILi that runs a one-minute motor check adapted from the MDS-UPDRS (hand flips, tremor via FFT, alternating taps, voice) with ElevenLabs voice guidance. Each result is tagged with time since the last dose and stored as TimescaleDB time series, so clinicians can see when medication kicks in and wears off, while Fetch.ai agents and iMessage alerts keep caregivers in the loop. <a href="https://github.com/ahansoty/taptrack-pd" target="_blank" rel="noopener">Code on GitHub</a>.</p>
+                <p class="tags">FREE-WILi · Python · FastAPI · TimescaleDB · Fetch.ai<span class="note">1st Place, Tiger Data Track · MHacks 2026</span></p>
               </div>
             </article>
 
-            <article class="card" role="group" aria-label="Project 4 of 4">
+            <article class="card" role="group" aria-label="Project 4 of 5">
               <figure class="media">
                 <img src="media/tibial-plate-cover.png" alt="SolidWorks model of the 10-hole Ti-6Al-4V tibial locking compression plate">
               </figure>
@@ -684,10 +683,32 @@
                 <button class="thumb" data-img="media/tibial-plate-simulink-results.png" aria-label="Plate stress and load share over 12 weeks of healing"></button>
               </div>
               <div class="card-body">
-                <p class="meta"><b>04</b>/04 &nbsp;·&nbsp; Personal project</p>
+                <p class="meta"><b>04</b>/05 &nbsp;·&nbsp; Personal project</p>
                 <h3>Tibial Fracture Fixation Plate (ASTM F382)</h3>
                 <p class="blurb">Parametric <a href="https://github.com/ahansoty/tibial-plate-f382" target="_blank" rel="noopener">locking compression plate</a> designed in SolidWorks and validated to ASTM F382 via finite element analysis. Bending FOS 1.73, torsion FOS 2.36. Parallel Simulink model simulates fracture healing load transfer over 12 weeks.</p>
                 <p class="tags">SolidWorks · FEA · ASTM · Simulink</p>
+              </div>
+            </article>
+
+            <article class="card" role="group" aria-label="Project 5 of 5">
+              <figure class="media">
+                <video src="media/emg-demo.mp4" poster="media/emg-demo.jpg"
+                       autoplay muted loop playsinline preload="metadata"></video>
+              </figure>
+              <div class="strip">
+                <button class="thumb" data-video="media/emg-grasp.mp4" data-poster="media/emg-grasp.jpg" aria-label="Grasping a container"></button>
+                <button class="thumb" data-img="media/emg-wiring.jpg" aria-label="Schematic, signal and power"></button>
+                <button class="thumb" data-img="media/emg-assembly.jpg" aria-label="Gripper assembly, CAD"></button>
+                <button class="thumb" data-img="media/emg-arm1.jpg" aria-label="Linkage arm, left"></button>
+                <button class="thumb" data-img="media/emg-arm2.jpg" aria-label="Linkage arm, right"></button>
+                <button class="thumb" data-img="media/emg-bottom.jpg" aria-label="Housing, base plate"></button>
+                <button class="thumb" data-img="media/emg-lid.jpg" aria-label="Housing, lid"></button>
+              </div>
+              <div class="card-body">
+                <p class="meta"><b>05</b>/05 &nbsp;·&nbsp; Personal project</p>
+                <h3>EMG-controlled prosthetic gripper</h3>
+                <p class="blurb">A 3D-printed two-finger gripper driven by surface EMG: MG996R servo, MyoWare 2.0 sensor, and Arduino Uno on a separate supply to stop servo stutter under load. An <a href="https://github.com/ahansoty/emg-gesture-gripper" target="_blank" rel="noopener">LDA classifier</a> on five time-domain features separates rest, open and fist at 99.4% accuracy, trained on 9,000 labelled windows.</p>
+                <p class="tags">SolidWorks · Arduino · Python · scikit-learn</p>
               </div>
             </article>
 
